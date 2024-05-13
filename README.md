@@ -46,6 +46,11 @@ This is a representative summary of the most relevant results. The jupyter noteb
 
 ![image](https://github.com/solutioncrafter/wine_clustering/assets/126869447/0a1ac9b5-0b26-43cf-bd50-018b31eca49b)
 
+- One effective way to visualize how different are the features of the 3 wine classes is by creating a radar plot.
+
+![newplot](https://github.com/solutioncrafter/wine_clustering/assets/126869447/ef580558-7bf3-4259-9dbf-22bbaa5c644a)
+
+
 ### Comparing the Predicted and Original Clusters
 
 - A qualitative and quantitative analysis showed a strong match between the original and the "predicted" clusters, further validating the "blind cluster extraction" results.
