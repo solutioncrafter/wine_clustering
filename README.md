@@ -2,7 +2,7 @@
 
 ## Overview
 
--The main goal of this analysis is to use unsupervised machine learning (clustering) to classify different types of wine according to their chemical and physical properties.
+- The main goal of this analysis is to use unsupervised machine learning (clustering) to classify different types of wine according to their chemical and physical properties.
 - I also aim to provide a set of quantitative scores to evaluate the correctness of the clustering analysis.
 - Finally, the "predicted" clusters are compared with the ground truth classes to further validate the analysis.
 
