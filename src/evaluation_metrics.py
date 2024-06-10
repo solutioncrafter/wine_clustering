@@ -1,6 +1,22 @@
+"""
+
+This module provides functions for computing and plotting KMeans clustering
+metrics.
+
+Functions:
+- compute_metrics: Computes various clustering metrics for a range of cluster
+  numbers.
+
+- plot_kmeans_evaluation_curves: Plots the evaluation curves for the clustering
+  metrics.
+
+"""
+
+from typing import Tuple, List
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
+from matplotlib import gridspec
 import numpy as np
+import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.metrics import davies_bouldin_score
@@ -8,12 +24,33 @@ from sklearn.metrics import calinski_harabasz_score
 from sklearn.preprocessing import StandardScaler
 
 
-def compute_metrics(dataframe, cluster_number=range(2, 10)):
+def compute_metrics(dataframe: pd.DataFrame, cluster_number=range) -> Tuple[
+    List[float],
+    List[float],
+    List[float],
+    List[float]
+                ]:
+
+    """
+    Compute clustering metrics for different numbers of clusters using KMeans.
+
+    Parameters:
+    dataframe (pd.DataFrame): The input data to cluster.
+    cluster_number (range): The range of cluster numbers to evaluate
+    (default: range(2, 10)).
+
+    Returns:
+    tuple: A tuple containing the lists of metrics:
+        - wcss (list): Within-cluster sum of squares.
+        - silhouette_scores (list): Silhouette scores.
+        - calinski_harabasz_scores (list): Calinski-Harabasz scores.
+        - davies_bouldin_scores (list): Davies-Bouldin scores.
+    """
     # Initialize lists to store metrics
-    wcss = []  # Within-cluster sum of squares
-    silhouette_scores = []
-    calinski_harabasz_scores = []
-    davies_bouldin_scores = []
+    wcss: List[float] = []  # Within-cluster sum of squares
+    silhouette_scores: List[float] = []
+    calinski_harabasz_scores: List[float] = []
+    davies_bouldin_scores: List[float] = []
 
     # define scaler to perform standarization
     scaler = StandardScaler()
@@ -76,9 +113,18 @@ def compute_metrics(dataframe, cluster_number=range(2, 10)):
 
 
 def plot_kmeans_evaluation_curves(
-        dataframe,
-        cluster_number_evaluation,
-        cluster_number=range(2, 10)):
+        dataframe: pd.DataFrame,
+        cluster_number_evaluation: int,
+        cluster_number: range = range(2, 10)) -> None:
+    """
+    Plot the evaluation curves for KMeans clustering metrics.
+
+    Parameters:
+    dataframe (pd.DataFrame): The input data to cluster.
+    cluster_number_evaluation (int): The number of clusters evaluated.
+    cluster_number (range): The range of cluster numbers to evaluate
+    (default is range(2, 10)).
+    """
     # compute  metrics
     (
         wcss,
